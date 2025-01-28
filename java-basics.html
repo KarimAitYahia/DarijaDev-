@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات Java</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <h1>أساسيات Java</h1>
+        <p>تعلم الأساسيات لتبدأ رحلتك في عالم Java!</p>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h2>ما هي أساسيات Java؟</h2>
+        <p>
+            أساسيات Java تشمل المفاهيم الأساسية مثل المتغيرات، أنواع البيانات، العمليات الحسابية،
+            الجمل الشرطية، الحلقات التكرارية، والدوال. هذه المفاهيم هي اللبنات الأولى لبناء برامج Java.
+        </p>
+        <h2>المفاهيم الأساسية</h2>
+      <ul
+       <li><a href="javacom.html">hhhhh</a></li>
+            <li>الجمل الشرطية (if, else, switch)</li>
+            <li>الحلقات التكرارية (for, while, do-while)</li>
+            <li>الدوال (Methods)</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+    </script>
+    <script src="script.js"></script>
+    <!-- الفوتر -->
+    <footer>
+        <p>© 2023 موقع تعلم البرمجة والتصميم. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

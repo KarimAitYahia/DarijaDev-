@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم الجافا بالدارجة المغربية</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #00ff88;
+            --secondary-color: #7000ff;
+            --background-dark: #121212;
+            --background-light: #ffffff;
+            --text-dark: #ffffff;
+            --text-light: #121212;
+                  --h2-color-dark: #00ff88; /* اللون الأخضر للوضع الليلي */
+            --h2-color-light: #7000ff; /* اللون البنفسجي للوضع النهاري */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            direction: rtl;
+        }
+        
+    
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        /* زر الرجوع */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: black;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        /* المحتوى الرئيسي */
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--h2-color-dark); /* اللون الافتراضي للوضع الليلي */
+        }
+        body.light-mode h2 {
+    color: var(--h2-color-light); /* اللون للوضع النهاري */}
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* زر تبديل الوضع */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-color);
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--secondary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- زر الرجوع -->
+    <a class="back-button" href="/">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </a>
+
+ <!-- زر تبديل الوضع -->
+    <div class="theme-toggle">
+        <span>الوضع المظلم</span>
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+
+    <!-- الهيدر -->
+    <header>
+        <h1>تعلم الجافا بالدارجة المغربية</h1>
+        <p>خطوة بخطوة، من الصفر إلى الإحتراف!</p>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <!-- مقدمة -->
+        <h2>مقدمة على الجافا</h2>
+        <p>
+            الجافا هي لغة برمجة قوية وسهلة التعلم. كتستعمل فمجالات بزاف، منها تطوير التطبيقات،
+            الويب، والألعاب. فهاد الصفحة، غاندوزو مع بعض خطوة بخطوة باش نتعلمو الجافا من الصفر.
+        </p>
+
+        <!-- الأساسيات -->
+        <h2>الأساسيات ديال الجافا</h2>
+        <p>
+            قبل ما نبداو نبرمجو، لازم نفهمو الأساسيات ديال الجافا. هاد المفاهيم هي اللبنات الأولى
+            لي غادي نستعملوهم فكل شي غادي نتعلموه.
+        </p>
+        <ul>
+            <li><strong>المتغيرات (Variables):</strong> هي أماكن فالميموار لي كتخزن البيانات. مثال: <code class="language-javascript">int age = 25;</code></li>
+            <li><strong>أنواع البيانات (Data Types):</strong> كل متغير عندو نوع ديالو. مثال: <code class="language-javascript">int</code> (عدد صحيح)، <code class="language-javascript">String</code> (نص).</li>
+            <li><strong>الجمل الشرطية (If-Else):</strong> كتخلي البرنامج يقرر شحال حاجة على أساس شرط معين. مثال:
+                <pre class="code-block">
+                  <code class="language-javascript">
+if (age > 18) {
+    System.out.println("أنت بالغ");
+} else {
+    System.out.println("أنت قاصر");
+}
+                  </code></pre>
+            </li>
+            <li><strong>الحلقات التكرارية (Loops):</strong> كتخلي البرنامج يعيد شحال حاجة. مثال:
+                <pre class="code-block">
+                  <code class="language-javascript">
+for (int i = 0; i < 5; i++) {
+    System.out.println("الرقم: " + i);
+}
+                  </code></pre>
+            </li>
+        </ul>
+
+        <!-- الدوال -->
+        <h2>الدوال (Functions)</h2>
+        <p>
+            الدوال هي وحدات من الكود لي كتقوم بمهمة معينة. يمكن استدعاء الدوال من مختلف أجزاء البرنامج. مثال:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+public class Main {
+    public static void main(String[] args) {
+        sayHello();
+    }
+
+    public static void sayHello() {
+        System.out.println("السلام عليكم!");
+    }
+}
+          </code>
+        </pre>
+
+        <!-- البرمجة الموازية -->
+        <h2>البرمجة الموازية (Concurrency)</h2>
+        <p>
+            البرمجة الموازية تسمح بتنفيذ عدة أوامر في وقت واحد، مما يحسن أداء البرنامج. مثال:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+public class Main {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(() -> {
+            System.out.println("العملية الأولى");
+        });
+
+        Thread thread2 = new Thread(() -> {
+            System.out.println("العملية الثانية");
+        });
+
+        thread1.start();
+        thread2.start();
+    }
+}
+          </code>
+        </pre>
+
+        <!-- المدخلات والمخرجات -->
+        <h2>المدخلات والمخرجات (Input/Output)</h2>
+        <p>
+            التعامل مع المدخلات والمخرجات هو جزء أساسي من البرمجة. مثال بسيط لقراءة وكتابة الملفات:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileIO {
+    public static void main(String[] args) {
+        // كتابة إلى ملف
+        try (FileWriter writer = new FileWriter("example.txt")) {
+            writer.write("السلام عليكم\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // قراءة من ملف
+        try (BufferedReader reader = new BufferedReader(new FileReader("example.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+          </code>
+        </pre>
+
+        <!-- برمجة الكائنات -->
+        <h2>برمجة الكائنات (OOP)</h2>
+        <p>
+            الجافا كتستعمل مفهوم البرمجة الكائنية (OOP). هاد المفهوم كيعتمد على "الكائنات" لي هي
+            عبارة عن بيانات ووظائف مرتبطين ببعض.
+        </p>
+        <ul>
+            <li><strong>الفئات (Classes):</strong> هي القوالب لي كتستعمل لإنشاء الكائنات. مثال:
+                <pre class="code-block">
+                  <code class="language-javascript">
+class Person {
+    String name;
+    int age;
+
+    void sayHello() {
+        System.out.println("سلام، أنا " + name);
+    }
+}
+                  </code></pre>
+            </li>
+            <li><strong>الكائنات (Objects):</strong> هي النسخ لي كتتخلق من الفئات. مثال:
+                <pre class="code-block">
+                  <code class="language-javascript">
+Person person1 = new Person();
+person1.name = "أحمد";
+person1.age = 25;
+person1.sayHello();
+                  </code></pre>
+            </li>
+            <li><strong>الوراثة (Inheritance):</strong> كتخلي فئة ترث من فئة أخرى. مثال:
+                <pre class="code-block">
+                  <code class="language-javascript">
+class Student extends Person {
+    String school;
+
+    void study() {
+        System.out.println(name + " كيدرس ف " + school);
+    }
+}
+                  </code></pre>
+            </li>
+        </ul>
+
+        <!-- المصفوفات -->
+        <h2>المصفوفات (Arrays)</h2>
+        <p>
+            المصفوفات هي هياكل بيانات لتخزين مجموعة من العناصر من نفس النوع. مثال:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+int[] numbers = {1, 2, 3, 4, 5};
+for (int number : numbers) {
+    System.out.println(number);
+}
+          </code>
+        </pre>
+
+        <!-- الاستثناءات -->
+        <h2>الاستثناءات (Exceptions)</h2>
+        <p>
+            الاستثناءات هي أخطاء تحدث أثناء تنفيذ البرنامج. يمكن التعامل معها باستخدام `try-catch`. مثال:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("خطأ: القسمة على صفر!");
+}
+          </code>
+        </pre>
+
+        <!-- المجموعات -->
+        <h2>المجموعات (Collections)</h2>
+        <p>
+            المجموعات هي هياكل بيانات متقدمة لتخزين ومعالجة البيانات. مثال:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+import java.util.ArrayList;
+
+ArrayList<String> names = new ArrayList<>();
+names.add("أحمد");
+names.add("محمد");
+names.add("علي");
+
+for (String name : names) {
+    System.out.println(name);
+}
+          </code>
+        </pre>
+
+        <!-- تطبيقات Android -->
+        <h2>تطوير تطبيقات Android</h2>
+        <p>
+            الجافا كتستعمل بشكل كبير فتطوير تطبيقات Android. هنا غاندوزو كيفاش نبداو نطورو تطبيقات
+            بسيطة باستخدام Android Studio.
+        </p>
+        <ul>
+            <li><strong>إعداد بيئة العمل:</strong> نزل Android Studio وكون جاهز باش تبدا.</li>
+            <li><strong>واجهات المستخدم (UI):</strong> تعلم كيفية تصميم واجهات المستخدم باستخدام XML.</li>
+        </ul>
+
+        <!-- واجهات المستخدم -->
+        <h2>واجهات المستخدم (UI)</h2>
+        <p>
+            واجهات المستخدم هي العناصر التفاعلية التي يتفاعل معها المستخدم. مثال على إنشاء زر والنقر عليه:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("مثال على واجهات المستخدم");
+        JButton button = new JButton("انقر هنا");
+
+        button.addActionListener(e -> JOptionPane.showMessageDialog(null, "تم النقر على الزر!"));
+
+        frame.add(button);
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+          </code>
+        </pre>
+
+        <!-- قواعد البيانات -->
+        <h2>التفاعل مع قواعد البيانات (Database Interaction)</h2>
+        <p>
+            يمكن التعامل مع قواعد البيانات في جافا باستخدام JDBC. مثال على الاتصال بقاعدة بيانات MySQL واسترجاع البيانات:
+        </p>
+        <pre class="code-block">
+          <code class="language-javascript">
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class DatabaseExample {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String user = "username";
+        String password = "password";
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students");
+
+            while (rs.next()) {
+                System.out.println("الاسم: " + rs.getString("name") + ", العمر: " + rs.getInt("age"));
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+          </code>
+        </pre>
+
+        <!-- المزيد من النصائح -->
+        <h2>المزيد من النصائح</h2>
+        <p>
+            - استمر في التعلم وكن دائمًا على اطلاع على التقنيات الجديدة.<br>
+            - شارك في المشاريع المفتوحة المصدر لاكتساب المزيد من الخبرة.<br>
+            - اتبع الدروس والموارد المتاحة عبر الإنترنت لمواكبة التطورات.
+        </p>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>© 2025 جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+    </script>
+</body>
+</html>
