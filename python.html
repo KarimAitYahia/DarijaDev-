@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم Python - DarijaDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+   
+    <style>
+      :root {
+    --h2-color-dark: #00ff88; /* اللون الأخضر للوضع الليلي */
+    --h2-color-light: #7000ff; /* اللون البنفسجي للوضع النهاري */
+}
+
+h2 {
+    color: var(--h2-color-dark); /* اللون الافتراضي للوضع الليلي */
+}
+
+body.light-mode h2 {
+    color: var(--h2-color-light); /* اللون للوضع النهاري */
+}
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- زر الرجوع -->
+    <a class="back-button" href="index.html">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </a>
+
+    <!-- زر تبديل الوضع -->
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+        <span id="theme-label">الوضع الليلي</span>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h1>تعلم Python</h1>
+        <p>هنا ستتعلم أساسيات لغة Python خطوة بخطوة.</p>
+
+        <!-- مقدمة -->
+        <h2>ما هي Python؟</h2>
+        <p>
+            Python هي لغة برمجة سهلة التعلم وقوية، تستخدم في تطوير الويب، تحليل البيانات، الذكاء الاصطناعي، وغيرها.
+            Python كتكون لغة بسيطة وسهلة الفهم، وكتعتمد على كتابة الكود بطريقة نظيفة ومنظمة.
+        </p>
+
+        <!-- المتغيرات -->
+        <h2>المتغيرات (Variables)</h2>
+        <p>
+            المتغيرات هي أماكن فالميموار لي كتخزن البيانات. ف Python، كتقدر تخزن أي نوع ديال البيانات (أرقام، نصوص، قوائم، إلخ) فمتغير.
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على المتغيرات
+اسم = "أحمد"
+عمر = 25
+طول = 1.75
+            </code>
+        </pre>
+
+        <!-- الجمل الشرطية -->
+        <h2>الجمل الشرطية (If-Else)</h2>
+        <p>
+            الجمل الشرطية كتخلي البرنامج يقرر شحال حاجة على أساس شرط معين. مثال: إيلا كان العمر أكبر من 18، نطبع "أنت بالغ"، وإلا نطبع "أنت قاصر".
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على الجمل الشرطية
+عمر = 20
+
+if عمر > 18:
+    print("أنت بالغ")
+else:
+    print("أنت قاصر")
+            </code>
+        </pre>
+
+        <!-- الحلقات التكرارية -->
+        <h2>الحلقات التكرارية (Loops)</h2>
+        <p>
+            الحلقات التكرارية كتخلي البرنامج يعيد شحال حاجة. ف Python، كاينين نوعين ديال الحلقات: `for` و `while`.
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على حلقة for
+for رقم in range(5):
+    print("الرقم:", رقم)
+
+# مثال على حلقة while
+عمر = 0
+while عمر < 5:
+    print("العمر:", عمر)
+    عمر += 1
+            </code>
+        </pre>
+
+        <!-- الدوال -->
+        <h2>الدوال (Functions)</h2>
+        <p>
+            الدوال هي وحدات من الكود لي كتقوم بمهمة معينة. يمكن استدعاء الدوال من مختلف أجزاء البرنامج.
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على دالة
+def سلم_عليك(اسم):
+    print("السلام عليكم،", اسم)
+
+سلم_عليك("أحمد")
+            </code>
+        </pre>
+
+        <!-- القوائم -->
+        <h2>القوائم (Lists)</h2>
+        <p>
+            القوائم هي هياكل بيانات لتخزين مجموعة من العناصر من نفس النوع أو أنواع مختلفة.
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على القوائم
+أسماء = ["أحمد", "محمد", "علي"]
+أعمار = [25, 30, 22]
+
+# طباعة العناصر
+for اسم in أسماء:
+    print(اسم)
+            </code>
+        </pre>
+
+        <!-- القواميس -->
+        <h2>القواميس (Dictionaries)</h2>
+        <p>
+            القواميس هي هياكل بيانات لتخزين البيانات بشكل أزواج مفتاح-قيمة.
+        </p>
+        <pre class="code-block">
+            <code class="language-javascript">
+# مثال على القواميس
+معلومات = {
+    "اسم": "أحمد",
+    "عمر": 25,
+    "مهنة": "مبرمج"
+}
+
+print("الاسم:", معلومات["اسم"])
+print("العمر:", معلومات["عمر"])
+            </code>
+        </pre>
+
+        <!-- المزيد من النصائح -->
+        <h2>المزيد من النصائح</h2>
+        <p>
+            - استمر في التعلم وكن دائمًا على اطلاع على التقنيات الجديدة.<br>
+            - شارك في المشاريع المفتوحة المصدر لاكتساب المزيد من الخبرة.<br>
+            - اتبع الدروس والموارد المتاحة عبر الإنترنت لمواكبة التطورات.
+        </p>
+    </div>
+
+    <script>
+       
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+    </script>
+</body>
+</html>

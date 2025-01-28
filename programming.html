@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم البرمجة - ARDix</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <!-- زر الرجوع -->
+    <a class="back-button" href="/">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </a>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="programming-content">
+        <h1 class="logo">تعلم البرمجة</h1>
+        
+        <div class="programming-intro">
+            <h2>مرحبا! غادي نشرح ليك البرمجة بالدارجة المغربية:</h2>
+            <p>
+                البرمجة هي فن ديال كتابة التعليمات للحاسوب باش يدير واحد الخدمة معينة. 
+                بمعنى آخر، هي كيفاش كنقولو للحاسوب شنو يدير بطريقة مفهومة ليه.
+            </p>
+
+            <h3>تخيل بلي البرمجة بحال واحد الوصفة ديال الطبخ:</h3>
+            <ul>
+                <li>كيما كتكون عندك وصفة فيها الخطوات باش تطيب شي حاجة</li>
+                <li>البرمجة هي نفس الحاجة، ولكن كتكتب تعليمات للحاسوب</li>
+            </ul>
+
+            <h3>مثال بسيط:</h3>
+            <p>
+                إيلا بغيتي تصاوب برنامج باش يحسب ليك مجموع جوج أرقام:
+            </p>
+            <ol>
+                <li>كتقول للحاسوب: "خود مني الرقم الأول"</li>
+                <li>كتقول ليه: "خود مني الرقم الثاني"</li>
+                <li>كتقول ليه: "دير الجمع ديالهم"</li>
+                <li>كتقول ليه: "وري لي النتيجة"</li>
+            </ol>
+        </div>
+
+        <div class="programming-categories">
+            <div class="category-card" onclick="location.href='python.html'">
+                <i class="fas fa-laptop-code"></i>
+                <h3>تعلم Python</h3>
+                <p>أساسيات البرمجة للمبتدئين</p>
+            </div>
+            <div class="category-card" onclick="location.href='hh.html'">
+                <i class="fas fa-globe"></i>
+                <h3>تطوير المواقع</h3>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+            <div class="category-card" onclick="location.href='app.html'">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>تطوير التطبيقات</h3>
+                <p>Android و iOS تطبيقات</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+        // إضافة تأثيرات حركية للبطاقات
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+
+            card.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
