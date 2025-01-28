@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم تطوير التطبيقات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
+    <!-- إضافة ملف تنسيق Prism.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        /* نفس التصميم السابق */
+        :root {
+            --primary-color: #00ff88;
+            --secondary-color: #7000ff;
+            --background-dark: #121212;
+            --background-light: #ffffff;
+            --text-dark: #ffffff;
+            --text-light: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            direction: rtl;
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: black;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-color);
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--secondary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .programming-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .programming-content section {
+            margin-bottom: 2rem;
+        }
+
+        .programming-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .programming-content p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .logo {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #change-color-button {
+            background: var(--primary-color);
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #change-color-button:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- زر الرجوع -->
+    <a href="#" class="back-button">رجوع</a>
+
+
+    <!-- المحتوى الرئيسي -->
+    <div class="programming-content">
+        <h1 class="logo">تعلم تطوير التطبيقات</h1>
+
+        <!-- دروس Android -->
+        <section>
+            <h2>دروس Android</h2>
+            <p>هنا ستجد دروسًا لتعلم تطوير تطبيقات Android باستخدام Kotlin و Java.</p>
+            <div class="code-block">
+                <pre><code class="language-java">
+// مثال بسيط لكتابة Hello World في Android
+TextView textView = findViewById(R.id.textView);
+textView.setText("Hello World!");
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- دروس iOS -->
+        <section>
+            <h2>دروس iOS</h2>
+            <p>هنا ستجد دروسًا لتعلم تطوير تطبيقات iOS باستخدام Swift.</p>
+            <div class="code-block">
+                <pre><code class="language-swift">
+// مثال بسيط لكتابة Hello World في iOS
+let label = UILabel()
+label.text = "Hello World!"
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- دروس واجهات المستخدم (UI) -->
+        <section>
+            <h2>واجهات المستخدم (UI)</h2>
+            <p>تعلم كيفية تصميم واجهات مستخدم جذابة وسهلة الاستخدام.</p>
+            <div class="code-block">
+                <pre><code class="language-xml">
+&lt;!-- مثال لتصميم زر في Android --&gt;
+&lt;Button
+    android:id="@+id/myButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="انقر هنا" /&gt;
+                </code></pre>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-swift">
+// مثال لتصميم زر في iOS
+let button = UIButton(type: .system)
+button.setTitle("انقر هنا", for: .normal)
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- دروس قواعد البيانات -->
+        <section>
+            <h2>قواعد البيانات</h2>
+            <p>تعلم كيفية التعامل مع قواعد البيانات في تطبيقات Android و iOS.</p>
+            <div class="code-block">
+                <pre><code class="language-java">
+// مثال لاستخدام SQLite في Android
+SQLiteDatabase db = openOrCreateDatabase("myDB", MODE_PRIVATE, null);
+db.execSQL("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)");
+                </code></pre>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-swift">
+// مثال لاستخدام Core Data في iOS
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+let newUser = User(context: context)
+newUser.name = "John"
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- دروس APIs -->
+        <section>
+            <h2>التعامل مع APIs</h2>
+            <p>تعلم كيفية الاتصال بالخوادم واستخدام APIs في تطبيقاتك.</p>
+            <div class="code-block">
+                <pre><code class="language-java">
+// مثال لاستخدام Retrofit في Android
+Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl("https://api.example.com/")
+    .addConverterFactory(GsonConverterFactory.create())
+    .build();
+                </code></pre>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-swift">
+// مثال لاستخدام URLSession في iOS
+let url = URL(string: "https://api.example.com/data")!
+let task = URLSession.shared.dataTask(with: url) { data, response, error in
+    // التعامل مع البيانات
+}
+task.resume()
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- دروس الأمان -->
+        <section>
+            <h2>أمان التطبيقات</h2>
+            <p>تعلم كيفية حماية تطبيقاتك من الاختراقات.</p>
+            <div class="code-block">
+                <pre><code class="language-java">
+// مثال لتشفير البيانات في Android
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+                </code></pre>
+            </div>
+            <div class="code-block">
+                <pre><code class="language-swift">
+// مثال لتشفير البيانات في iOS
+let key = SymmetricKey(size: .bits256)
+let sealedBox = try! AES.GCM.seal(data, using: key)
+                </code></pre>
+            </div>
+        </section>
+
+        <!-- زر تغيير اللون -->
+        <button id="change-color-button">تغيير اللون</button>
+    </div>
+
+
+    <!-- إضافة مكتبة Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml-doc.min.js"></script>
+
+    <script>
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+        // تغيير لون الزر التفاعلي
+        const changeColorButton = document.getElementById('change-color-button');
+        changeColorButton.addEventListener('click', () => {
+            document.documentElement.style.setProperty('--primary-color', '#ff0077');
+            document.documentElement.style.setProperty('--secondary-color', '#ffcc00');
+        });
+    </script>
+</body>
+</html>

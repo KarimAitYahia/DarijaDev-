@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم تصميم مواقع الويب - DarijaDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <style>
+      :root {
+    --primary-color: #00ff88;
+    --secondary-color: #7000ff;
+    --background-dark: #121212;
+    --background-light: #ffffff;
+    --text-dark: #ffffff;
+    --text-light: #121212;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    direction: rtl;
+}
+
+body.light-mode {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+/* زر الرجوع */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--primary-color);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* زر تبديل الوضع */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* المحتوى الرئيسي */
+.programming-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.programming-content section {
+    margin-bottom: 2rem;
+}
+
+.programming-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.programming-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* تنسيق روابط التواصل الاجتماعي */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    font-size: 24px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* تنسيق العنوان */
+.logo {
+    font-family: 'Cairo', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* تنسيق الزر التفاعلي */
+#change-color-button {
+    background: var(--primary-color);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#change-color-button:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- زر الرجوع -->
+    <a class="back-button" href="index.html">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </a>
+
+    <!-- زر تبديل الوضع -->
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label>
+        <span id="theme-label">الوضع الليلي</span>
+    </div>
+
+    <!-- الهيدر -->
+    <header>
+        <h1 class="logo">تعلم تصميم مواقع الويب</h1>
+        <p>ابدأ رحلتك في تعلم تصميم مواقع الويب باستخدام HTML, CSS, و JavaScript!</p>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="programming-content">
+        <!-- HTML -->
+        <section>
+            <h2>HTML</h2>
+            <p>
+                HTML هي لغة ترميز تستخدم لإنشاء هيكل صفحات الويب. هي الأساس الذي تبني عليه المواقع.
+            </p>
+            <pre class="code-block">
+                <code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;موقعي الأول&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;مرحبًا بالعالم!&lt;/h1&gt;
+    &lt;p&gt;هذا هو موقعي الأول.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- CSS -->
+        <section>
+            <h2>CSS</h2>
+            <p>
+                CSS هي لغة تنسيق تستخدم لتزيين وتصميم صفحات الويب. يمكنك استخدامها لتغيير الألوان، الخطوط، والتخطيط.
+            </p>
+            <pre class="code-block">
+                <code class="language-css">
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Cairo', sans-serif;
+}
+
+h1 {
+    color: #00ff88;
+    text-align: center;
+}
+                </code>
+            </pre>
+        </section>
+
+        <!-- JavaScript -->
+        <section>
+            <h2>JavaScript</h2>
+            <p>
+                JavaScript هي لغة برمجة تستخدم لإضافة التفاعل إلى صفحات الويب. يمكنك استخدامها لإنشاء عناصر تفاعلية مثل القوائم المتحركة والنوافذ المنبثقة.
+            </p>
+            <pre class="code-block">
+                <code class="language-javascript">
+// مثال بسيط على JavaScript
+document.querySelector('h1').addEventListener('click', function() {
+    alert('تم النقر على العنوان!');
+});
+                </code>
+            </pre>
+        </section>
+
+        <!-- مثال تفاعلي -->
+        <section>
+            <h2>مثال تفاعلي</h2>
+            <p>جرب هذا المثال التفاعلي لتغيير لون الخلفية:</p>
+            <button id="change-color-button">غير لون الخلفية</button>
+        </section>
+    </div>
+
+    <!-- الفوتر مع روابط التواصل الاجتماعي -->
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com/حسابك" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com/حسابك" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com/حسابك" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/حسابك" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://github.com/حسابك" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p>© 2025 DarijaDev. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // التحقق من الوضع المحفوظ (ليلي/نهاري)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            document.getElementById('theme-label').textContent = 'الوضع النهاري';
+        }
+
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+    </script>
+</body>
+</html>

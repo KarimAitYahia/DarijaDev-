@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم التصميم - DarijaDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
+</head>
+<body class="dark-mode">
+    <!-- زر الرجوع -->
+    <a class="back-button" href="index.html">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </a>
+
+    <!-- زر تبديل الوضع -->
+    
+    <!-- الهيدر -->
+    <header>
+        <h1 class="logo">تعلم التصميم</h1>
+        <p>ابدأ رحلتك في عالم التصميم!</p>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="programming-content">
+        <h2>الدورات المتاحة</h2>
+        <div class="programming-categories">
+            <div class="category-card" onclick="location.href='design_js.html'">
+                <i class="fas fa-paint-brush"></i>
+                <h3>تصميم الويب</h3>
+                <p>تعلم تصميم مواقع الويب باستخدام HTML, CSS, و JavaScript.</p>
+            </div>
+            <div class="category-card" onclick="location.href='design_ph.html'">
+                <i class="fas fa-palette"></i>
+                <h3>تصميم الجرافيك</h3>
+                <p>تعلم أساسيات التصميم الجرافيكي باستخدام أدوات مثل Photoshop و Illustrator.</p>
+            </div>
+            <div class="category-card" onclick="location.href='design_ui.html'">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>تصميم UI/UX</h3>
+                <p>تعلم تصميم واجهات المستخدم وتجربة المستخدم.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر مع روابط التواصل الاجتماعي -->
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com/حسابك" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://twitter.com/حسابك" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com/حسابك" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://youtube.com/حسابك" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://github.com/حسابك" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p>© 2025 DarijaDev. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // تحميل الوضع المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+
+        if (savedTheme === 'light-mode') {
+            body.classList.add('light-mode');
+            themeToggle.checked = true;
+        }
+
+        // تبديل الوضع الليلي والنهري
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+
+    </script>
+</body>
+</html>
